@@ -1,0 +1,32 @@
+name: Build and Package with Inno Setup
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Inno Setup
+      run: |
+        choco install innosetup -y
+        echo "C:\Program Files (x86)\Inno Setup 6" >> $GITHUB_PATH
+
+    - name: Compile Inno Setup Script
+      run: |
+        ISCC.exe "${env:GITHUB_WORKSPACE}\innosetup\install.iss"
+        
+    - name: Upload compiled EXE file
+      uses: actions/upload-artifact@v2
+      with:
+        name: MyXinLiJianKang-installer
+        path: "D:/a/SchoolMentalHealth/SchoolMentalHealth/MyXinLiJianKang-0.1.exe"

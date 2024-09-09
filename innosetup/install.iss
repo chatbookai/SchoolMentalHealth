@@ -7,7 +7,7 @@
 #define MyAppURL "https://www.dandian.net"
 #define MyAppExeName "MyProg-x64.exe"
 #define MyAppInstallDir "D:\MyXinLiJianKang"
-#define MyAppSourceDir "D:\a\phpenv\phpenv"
+#define MyAppSourceDir "D:\a\SchoolMentalHealth\SchoolMentalHealth"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -51,7 +51,13 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "{#MyAppSourceDir}\apache\*"; DestDir: "{app}\apache"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\Attach\*"; DestDir: "{app}\Attach"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MyAppSourceDir}\htdocs\*"; DestDir: "{app}\htdocs"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppSourceDir}\htdocs\api\*"; DestDir: "{app}\htdocs\api"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppSourceDir}\htdocs\goview\*"; DestDir: "{app}\htdocs\goview"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppSourceDir}\htdocs\public\*"; DestDir: "{app}\htdocs\public"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppSourceDir}\htdocs\styles\*"; DestDir: "{app}\htdocs\styles"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppSourceDir}\htdocs\webroot\*"; DestDir: "{app}\htdocs\webroot"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppSourceDir}\htdocs\心理健康测评量表\*"; DestDir: "{app}\htdocs\心理健康测评量表"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppSourceDir}\htdocs\心理测评报告样例\*"; DestDir: "{app}\htdocs\心理测评报告样例"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\install\*"; DestDir: "{app}\install"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\mysql\*"; DestDir: "{app}\mysql"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\php\*"; DestDir: "{app}\php"; Flags: ignoreversion recursesubdirs createallsubdirs
