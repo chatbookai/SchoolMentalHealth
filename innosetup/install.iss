@@ -54,7 +54,6 @@ Source: "{#MyAppSourceDir}\Attach\*"; DestDir: "{app}\Attach"; Flags: ignorevers
 Source: "{#MyAppSourceDir}\htdocs\api\*"; DestDir: "{app}\htdocs\api"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\public\*"; DestDir: "{app}\htdocs\public"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\styles\*"; DestDir: "{app}\htdocs\styles"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MyAppSourceDir}\htdocs\webroot\*"; DestDir: "{app}\htdocs\webroot"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\心理健康测评量表\*"; DestDir: "{app}\htdocs\心理健康测评量表"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\心理测评报告样例\*"; DestDir: "{app}\htdocs\心理测评报告样例"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\install\*"; DestDir: "{app}\install"; Flags: ignoreversion recursesubdirs createallsubdirs
