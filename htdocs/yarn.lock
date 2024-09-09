@@ -5970,13 +5970,12 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-next-transpile-modules@9.1.0:
-  version "9.1.0"
-  resolved "https://registry.npmjs.org/next-transpile-modules/-/next-transpile-modules-9.1.0.tgz"
-  integrity sha512-yzJji65xDqcIqjvx5vPJcs1M+MYQTzLM1pXH/qf8Q88ohx+bwVGDc1AeV+HKr1NwvMCNTpwVPSFI7cA5WdyeWA==
+next-transpile-modules@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.npmjs.org/next-transpile-modules/-/next-transpile-modules-10.0.1.tgz"
+  integrity sha512-4VX/LCMofxIYAVV58UmD+kr8jQflpLWvas/BQ4Co0qWLWzVh06FoZkECkrX5eEZT6oJFqie6+kfbTA3EZCVtdQ==
   dependencies:
     enhanced-resolve "^5.10.0"
-    escalade "^3.1.1"
 
 next@^13.5.6:
   version "13.5.6"
