@@ -9,7 +9,7 @@ let indexMenuspath = "auth/menus.php"
 
 
 if(hostname == 'localhost')   {
-  APP_URL = "http://localhost/api/"
+  APP_URL = "http://localhost:8080/api/"
   themeNameTemp = "单点科技"
   indexDashboardPath = "/ceping"
   indexMenuspath = "auth/menus.php"
