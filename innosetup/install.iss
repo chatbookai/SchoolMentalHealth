@@ -52,7 +52,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "{#MyAppSourceDir}\apache\*"; DestDir: "{app}\apache"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\Attach\*"; DestDir: "{app}\Attach"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\api\*"; DestDir: "{app}\htdocs\api"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#MyAppSourceDir}\htdocs\goview\*"; DestDir: "{app}\htdocs\goview"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\public\*"; DestDir: "{app}\htdocs\public"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\styles\*"; DestDir: "{app}\htdocs\styles"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#MyAppSourceDir}\htdocs\webroot\*"; DestDir: "{app}\htdocs\webroot"; Flags: ignoreversion recursesubdirs createallsubdirs
