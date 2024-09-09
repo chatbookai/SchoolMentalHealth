@@ -59,40 +59,22 @@
 18. 底部常用按钮控制：删除，批量通过，批量退回，批量拒绝，重置密码为123654，重置密码为身份证号后六位，批量设置一，批量设置二。
 19. 批量审核：可以设置批量审核的人，状态，时间，意见。同时支持更新其它字段的值，用于实现其它字段的同步操作。
 
-## 开发进度
-
-正在开发中...
-
 ## 如何安装
 
 前端开发环境: Node 18.17.1 以上
 
-前端开发使用命令：
+前端开发使用命令，在htdocs目录下面执行：
 ```
 npm install
 npm run dev
 ```
-前端开发完成进行进行打包命令：
+前端开发完成进行进行打包命令，在htdocs目录下面执行：
 ```
 npm run build
-npm run export
 ```
 后端安装说明：
 ```
-手动安装过程有些繁琐，同时对安装者的技术水平要求有些高，所以建议大家使用一键安装包来安装。
-手动配置后端过程:
-后端代码在api目录下面，需要PHP7和MYSQL5.6以上支持。
-数据库脚本：需要在安装包的数据库中导出SQL脚本
-PHP配置文件：api/config.inc.php
-导入数据库脚本并且配置完数据库的用户名和密码过后，需要在前端项目中单独配置一下您的后端地址，假设您的后端地址是 http://localhost/api ，然后需要把这个后端地址修改到/src/configs/auth.ts的APP_URL变量，这样前端就可以得到后端的地址并进行调用。
-在配置后端环境的过程中，需要在Apache中增加以下配置，用于在PHP获取Authorization的值:
-<IfModule mod_rewrite.c>
-    Options +FollowSymlinks -Multiviews
-    RewriteEngine on
-    RewriteCond %{HTTP:Authorization} ^(.*)
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
-</IfModule>
-手动安装过程有些繁琐，同时对安装者的技术水平要求有些高，所以建议大家使用一键安装包来安装。
+后端已经在本项目中已经集成，下载代码以后，先点击InitialSetup.bat，再点击 xampp-control.exe 完成程序启动。
 ```
 一键安装包：
 ```
@@ -101,11 +83,11 @@ PHP: 8.2.4
 APACHE: 2.4.56
 MYSQL: MariaDB 10.4
 
-1 双击 MYEDU.exe， 文件解压过程中如果有窗口提示，请允许。
-2 文件解压完成以后，弹出一个对话框，请输入1，此时会把相关的路径替换为您解压的位置。
-3 打开xampp-control.exe， 然后手工启动Apache和Mysql，如果有提示端口冲突，可以更换为其它的端口.在这个环节可以设置系统服务或是启动后执行。
-4 APACHE和MYSQL正常启动以后，请在浏览器打开 http://localhost 就可以看到系统的界面了。
-
+1 双击 XXX.exe，开始安装过程，通常按系统默认配置操作即可。
+2 安装完成系统会弹出一个WIN窗口，等执行完成以后，按任意键即可。然后会自动打开xampp-control.exe， 启动Apache和Mysql，如果有提示端口冲突，可以更换为其它的端口.在这个环节可以设置系统服务或是启动后执行。
+3 APACHE和MYSQL正常启动以后，请在浏览器打开 http://localhost:8080 就可以看到系统的界面了。
+4 后端配置文件: htdocs/api/config.inc.php
+5 前端配置文件: htdocs/src/configs/auth.ts
 当前运行环境从xampp-windows-x64-8.2.4-0-VS16-installer.exe(https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/)精简而来。
 ```
 
