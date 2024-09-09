@@ -473,7 +473,9 @@ const UserList = ({ backEndApi, externalId }: AddTableType) => {
           ws['!rows'].push({ hpx: 20 });
         }
         const header = Object.keys(jsonData['data'][0]);
-        XLSX.utils.sheet_add_aoa(ws, [header], { origin: 'A1' });
+        if ((XLSX.utils as any).sheet_add_aoa != undefined) {
+          (XLSX.utils as any).sheet_add_aoa(ws, [header], { origin: 'A1' });
+        }
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, 'Sheet 1');
         XLSX.writeFile(wb, store.export_default.titletext+'.xlsx');
