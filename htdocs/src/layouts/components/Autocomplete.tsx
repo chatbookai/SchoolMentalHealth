@@ -23,8 +23,13 @@ import MuiAutocomplete, { AutocompleteRenderInputParams } from '@mui/material/Au
 // ** Third Party Imports
 import axios from 'axios'
 
-// ** Types Imports
-import { AppBarSearchType } from 'src/@fake-db/types'
+export type AppBarSearchType = {
+  id: number
+  url: string
+  icon: string
+  title: string
+  category: string
+}
 import { Settings } from 'src/@core/context/settingsContext'
 
 // ** Icon Imports
