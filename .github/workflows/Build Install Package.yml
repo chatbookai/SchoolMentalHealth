@@ -15,6 +15,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Install Windows SDK
+      run: choco install windows-sdk-10.1
+      
+    - name: Find signtool.exe path
+      run: |
+        $signtoolPath = Get-ChildItem -Recurse -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "signtool.exe" | Select-Object -First 1 -ExpandProperty FullName
+        if ($signtoolPath) {
+          echo "signtool.exe found at $signtoolPath"
+        } else {
+          echo "signtool.exe not found"
+        }
     
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -39,7 +51,7 @@ jobs:
         ISCC.exe "${env:GITHUB_WORKSPACE}\innosetup\install.iss"
         
     - name: Upload compiled EXE file
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: MyXinLiJianKang-installer
         path: "D:/a/SchoolMentalHealth/SchoolMentalHealth/MyXinLiJianKang-0.1.exe"
