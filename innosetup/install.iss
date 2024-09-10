@@ -41,7 +41,7 @@ WizardStyle=modern
 DirExistsWarning=yes
 AllowUNCPath=yes
 DisableDirPage=no
-SignTool=C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\arm\signtool.exe sign /f yourdomain.pfx /p yourpassword /t http://timestamp.digicert.com
+; SignTool=C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\arm\signtool.exe sign /f yourdomain.pfx /p yourpassword /t http://timestamp.digicert.com
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
