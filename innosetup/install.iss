@@ -68,6 +68,7 @@ Source: "{#MyAppSourceDir}\readme.txt"; DestDir: "{app}"; Flags: ignoreversion r
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 
 [Run]
+Filename: "{app}\readme.txt"; Description: "{cm:LaunchProgram,Readme}"; Flags: nowait postinstall skipifsilent
 Filename: "{app}\InitialSetup.bat"; Description: "{cm:LaunchProgram,InitialSetup}"; Flags: waituntilterminated postinstall skipifsilent
 Filename: "{app}\xampp-control.exe"; Description: "{cm:LaunchProgram,xampp-control}"; Flags: nowait postinstall skipifsilent
 
