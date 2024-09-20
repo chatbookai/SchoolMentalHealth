@@ -8,3 +8,12 @@ mysql/data/ibtmp1
 
 
 /mysql/data
+*.ibd
+*.pid
+
+mysql/data/ibdata1
+mysql/data/ibtmp1
+mysql/data/myedu/data_log.ibd
+mysql/data/mysql.pid
+mysql/data/mysql/innodb_index_stats.ibd
+mysql/data/mysql/innodb_table_stats.ibd
