@@ -5,3 +5,6 @@ mysql/data/ib_logfile1
 mysql/data/mysql_error.log
 mysql/data/mysql.pid
 mysql/data/ibtmp1
+
+
+/mysql/data
