@@ -5,6 +5,7 @@ mysql/data/mysql_error.log
 mysql/data/mysql.pid
 mysql/data/ibtmp1
 
+/mysql
 /mysql/data
 
 *.ibd
@@ -15,3 +16,4 @@ mysql/data/myedu/data_log.ibd
 mysql/data/mysql.pid
 mysql/data/mysql/innodb_index_stats.ibd
 mysql/data/mysql/innodb_table_stats.ibd
+apache/logs/error.log
