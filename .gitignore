@@ -17,3 +17,7 @@ mysql/data/mysql.pid
 mysql/data/mysql/innodb_index_stats.ibd
 mysql/data/mysql/innodb_table_stats.ibd
 apache/logs/error.log
+apache/logs/access.log
+apache/logs/error.log
+apache/logs/httpd.pid
+xampp-control.log
