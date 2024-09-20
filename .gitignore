@@ -1,4 +1,3 @@
-
 /tmp
 mysql/data/ib_logfile0
 mysql/data/ib_logfile1
@@ -6,11 +5,10 @@ mysql/data/mysql_error.log
 mysql/data/mysql.pid
 mysql/data/ibtmp1
 
-
 /mysql/data
+
 *.ibd
 *.pid
-
 mysql/data/ibdata1
 mysql/data/ibtmp1
 mysql/data/myedu/data_log.ibd
