@@ -32,8 +32,6 @@ jobs:
         prerelease: false  # 是否为预发布
         body: |
           This is a draft release.
-        files: |
-          output.txt  # 替换为你生成的文件
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
