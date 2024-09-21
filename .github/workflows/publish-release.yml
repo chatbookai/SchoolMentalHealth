@@ -3,7 +3,7 @@ name: Publish Release
 on:
   push:
     branches:
-      - main  # 或者你希望触发发布的分支
+      - main
 
 jobs:
   build:
@@ -13,16 +13,24 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+    - name: Install jq
+      run: choco install jq
+
     - name: Install GitHub CLI
       run: |
         choco install gh
+        Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
         refreshenv
 
     - name: Get list of releases
       id: get_releases
       run: |
         gh api repos/${{ github.repository }}/releases > releases.json
-        DRAFT_RELEASE_ID=$(jq -r '.[] | select(.draft == true) | .id' releases.json)
+        $DRAFT_RELEASE_ID = $(jq -r '.[] | select(.draft == true) | .id' releases.json)
         echo "::set-output name=draft_release_id::$DRAFT_RELEASE_ID"
 
     - name: Delete draft release
