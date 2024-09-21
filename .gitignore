@@ -5,24 +5,28 @@ mysql/data/mysql_error.log
 mysql/data/mysql.pid
 mysql/data/ibtmp1
 
-/mysql
-/mysql/data
+apache/logs/error.log
+apache/logs/access.log
+apache/logs/error.log
+apache/logs/httpd.pid
+apache/logs/access.log
+apache/logs/error.log
+apache/logs/access.log
+apache/logs/error.log
+apache/logs/httpd.pid
 
-*.ibd
-*.pid
-mysql/data/ibdata1
-mysql/data/ibtmp1
-mysql/data/myedu/data_log.ibd
-mysql/data/mysql.pid
-mysql/data/mysql/innodb_index_stats.ibd
-mysql/data/mysql/innodb_table_stats.ibd
-apache/logs/error.log
-apache/logs/access.log
-apache/logs/error.log
-apache/logs/httpd.pid
+xampp-control.ini
 xampp-control.log
-apache/logs/access.log
-apache/logs/error.log
-apache/logs/access.log
-apache/logs/error.log
-apache/logs/httpd.pid
+
+
+# git rm --cached mysql/data/ib_logfile0
+# git rm --cached mysql/data/ib_logfile1
+# git rm --cached mysql/data/mysql_error.log
+# git rm --cached mysql/data/mysql.pid
+# git rm -r --cached apache/logs
+# git rm -r --cached xampp-control.ini
+# git commit -m "Remove ignored files from index"
+
+
+
+
