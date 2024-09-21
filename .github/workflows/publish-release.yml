@@ -21,29 +21,6 @@ jobs:
         echo "Building your project..."
         echo "Hello, World!" > output.txt
 
-    - name: Get list of releases
-      id: get_releases
-      run: |
-        curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-        https://api.github.com/repos/${{ github.repository }}/releases \
-        > releases.json
-        # 提取草稿 Releases 的 ID
-        DRAFT_RELEASE_ID=$(jq -r '.[] | select(.draft == true) | .id' releases.json)
-        echo "DRAFT_RELEASE_ID=$DRAFT_RELEASE_ID"
-        # 检查是否获取到正确的 ID
-        if [[ -z "$DRAFT_RELEASE_ID" ]]; then
-          echo "No draft release found."
-          exit 1
-        fi
-        echo "DRAFT_RELEASE_ID=$DRAFT_RELEASE_ID" >> $GITHUB_ENV  # 设置环境变量
-
-    - name: Delete draft release
-      if: env.DRAFT_RELEASE_ID != ''
-      run: |
-        curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-        https://api.github.com/repos/${{ github.repository }}/releases/${{ env.DRAFT_RELEASE_ID }}
-
-
     - name: Create or Update Release
       id: create_release
       uses: actions/create-release@v1
