@@ -21,9 +21,26 @@ jobs:
         echo "Building your project..."
         echo "Hello, World!" > output.txt
 
+    - name: Get list of releases
+      id: get_releases
+      run: |
+        curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        https://api.github.com/repos/${{ github.repository }}/releases \
+        > releases.json
+        # 提取草稿 Releases 的 ID
+        DRAFT_RELEASE_ID=$(jq -r '.[] | select(.draft == true) | .id' releases.json)
+        echo "::set-output name=draft_release_id::$DRAFT_RELEASE_ID"
+
+    - name: Delete draft release
+      if: steps.get_releases.outputs.draft_release_id != ''
+      run: |
+        curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        https://api.github.com/repos/${{ github.repository }}/releases/${{ steps.get_releases.outputs.draft_release_id }}
+
+
     - name: Create or Update Release
       id: create_release
-      uses: softprops/action-gh-release@v1
+      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
