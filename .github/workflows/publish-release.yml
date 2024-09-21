@@ -1,0 +1,46 @@
+name: Publish Release
+
+on:
+  push:
+    branches:
+      - main  # 或者你希望触发发布的分支
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # 在这里添加你的构建步骤，生成文件
+    - name: Build
+      run: |
+        echo "Building your project..."
+        # 示例：生成一个文件
+        echo "Hello, World!" > output.txt
+
+    - name: Create or Update Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v1.0.0  # 替换为你的版本号
+        release_name: Release v1.0.0  # 替换为你的发布名称
+        draft: true  # 设置为草稿
+        prerelease: false  # 是否为预发布
+        body: |
+          This is a draft release.
+        files: |
+          output.txt  # 替换为你生成的文件
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: output.txt  # 替换为你生成的文件
+        asset_name: output.txt  # 替换为你希望的文件名
+        asset_content_type: text/plain  # 替换为适当的 MIME 类型
