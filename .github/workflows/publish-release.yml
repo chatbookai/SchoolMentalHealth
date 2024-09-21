@@ -43,12 +43,13 @@ jobs:
         echo "Building your project..."
         echo "Hello, World!" > output.txt
 
-    - name: Get current time and format release name
+    - name: Get current time and format release name (PowerShell)
       id: set_release_name
+      shell: pwsh  # 使用 PowerShell
       run: |
-        CURRENT_TIME = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        FULL_RELEASE_NAME="单点高校心理健康管理系统 v0.0.3 - $CURRENT_TIME"
-        echo "FULL_RELEASE_NAME=$FULL_RELEASE_NAME" >> $GITHUB_ENV  # 将最终的release name设置为环境变量
+        $CURRENT_TIME = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+        $FULL_RELEASE_NAME = "单点高校心理健康管理系统 v0.0.3 - $CURRENT_TIME"
+        echo "FULL_RELEASE_NAME=$FULL_RELEASE_NAME" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
 
     - name: Create or Update Release
       id: create_release
