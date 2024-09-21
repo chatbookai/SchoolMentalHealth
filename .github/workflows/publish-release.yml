@@ -29,7 +29,13 @@ jobs:
         > releases.json
         # 提取草稿 Releases 的 ID
         DRAFT_RELEASE_ID=$(jq -r '.[] | select(.draft == true) | .id' releases.json)
-        echo "DRAFT_RELEASE_ID=$DRAFT_RELEASE_ID" >> $GITHUB_ENV  # 使用新方法设置环境变量
+        echo "DRAFT_RELEASE_ID=$DRAFT_RELEASE_ID"
+        # 检查是否获取到正确的 ID
+        if [[ -z "$DRAFT_RELEASE_ID" ]]; then
+          echo "No draft release found."
+          exit 1
+        fi
+        echo "DRAFT_RELEASE_ID=$DRAFT_RELEASE_ID" >> $GITHUB_ENV  # 设置环境变量
 
     - name: Delete draft release
       if: env.DRAFT_RELEASE_ID != ''
