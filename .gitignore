@@ -21,3 +21,8 @@ apache/logs/access.log
 apache/logs/error.log
 apache/logs/httpd.pid
 xampp-control.log
+apache/logs/access.log
+apache/logs/error.log
+apache/logs/access.log
+apache/logs/error.log
+apache/logs/httpd.pid
