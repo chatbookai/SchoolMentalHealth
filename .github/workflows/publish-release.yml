@@ -21,14 +21,20 @@ jobs:
         echo "Building your project..."
         echo "Hello, World!" > output.txt
 
+    - name: Get current time and format release name
+      id: set_release_name
+      run: |
+        FULL_RELEASE_NAME="单点高校心理健康管理系统 V0.2 - $(date +"%Y-%m-%d %H:%M:%S")"
+        echo "FULL_RELEASE_NAME=$FULL_RELEASE_NAME" >> $GITHUB_ENV  # 将最终的release name设置为环境变量
+
     - name: Create or Update Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v0.0.2
-        release_name: 单点高校心理健康管理系统 v0.0.2
+        tag_name: V0.2
+        release_name: ${{ env.FULL_RELEASE_NAME }}
         draft: true
         prerelease: false
         body: |
