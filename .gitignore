@@ -14,10 +14,9 @@ apache/logs/error.log
 apache/logs/access.log
 apache/logs/error.log
 apache/logs/httpd.pid
+apache/logs/ssl_request.log
 
-xampp-control.ini
 xampp-control.log
-
 
 # git rm --cached mysql/data/ib_logfile0
 # git rm --cached mysql/data/ib_logfile1
