@@ -61,14 +61,15 @@ jobs:
               学生: 20230101 / 密码: Abcd1234!    
 
     - name: Set upload URL
-      run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_ENV
+      run: |
+        echo "Upload URL is: ${{ steps.create_release.outputs.upload_url }}"
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ env.upload_url }}  # 使用环境变量
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: output.txt
         asset_name: output.txt
         asset_content_type: text/plain
