@@ -15,6 +15,8 @@ if(hostname == 'localhost')   {
   indexMenuspath = "auth/menus.php"
 }
 
+console.log("hostname:", hostname)
+
 export default {
   meEndpoint: APP_URL+'jwt.php?action=refresh',
   loginEndpoint: APP_URL+'jwt.php?action=login',
