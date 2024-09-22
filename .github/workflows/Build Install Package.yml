@@ -51,8 +51,7 @@ jobs:
     - name: Get current time and format release name
       id: set_release_name
       run: |
-        CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")  # 格式化当前时间
-        FULL_RELEASE_NAME="单点高校心理健康管理系统 V0.1 - $CURRENT_TIME"
+        FULL_RELEASE_NAME="单点高校心理健康管理系统 V0.1 - $(date +"%Y-%m-%d %H:%M:%S")"
         echo "FULL_RELEASE_NAME=$FULL_RELEASE_NAME" >> $GITHUB_ENV  # 将最终的release name设置为环境变量
 
     - name: Create or Update Release
@@ -96,7 +95,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ env.upload_url }}  # 使用环境变量
+        upload_url: ${{ env.upload_url }}
         asset_path: D:/a/SchoolMentalHealth/SchoolMentalHealth/MyXinLiJianKang-0.1.exe
         asset_name: D:/a/SchoolMentalHealth/SchoolMentalHealth/MyXinLiJianKang-0.1.exe
         asset_content_type: application/octet-stream
