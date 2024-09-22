@@ -51,7 +51,8 @@ jobs:
     - name: Get current time and format release name
       id: set_release_name
       run: |
-        FULL_RELEASE_NAME="单点高校心理健康管理系统 V0.1 - $(date +"%Y-%m-%d %H:%M:%S")"
+        $CURRENT_TIME = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+        $FULL_RELEASE_NAME = "单点高校心理健康管理系统 V0.1 - $CURRENT_TIME"
         echo "FULL_RELEASE_NAME=$FULL_RELEASE_NAME" >> $GITHUB_ENV  # 将最终的release name设置为环境变量
 
     - name: Create or Update Release
