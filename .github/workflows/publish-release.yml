@@ -10,49 +10,16 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install Chocolatey
-      run: |
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-    - name: Install jq
-      run: choco install jq
-
-    - name: Install GitHub CLI
-      run: |
-        choco install gh
-        Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-        refreshenv
-
-    - name: Get list of releases
-      id: get_releases
-      run: |
-        gh api repos/${{ github.repository }}/releases > releases.json
-        $DRAFT_RELEASE_ID = $(jq -r '.[] | select(.draft == true) | .id' releases.json)
-        echo "::set-output name=draft_release_id::$DRAFT_RELEASE_ID"
-
-    - name: Delete draft release
-      if: steps.get_releases.outputs.draft_release_id != ''
-      run: |
-        gh api -X DELETE repos/${{ github.repository }}/releases/${{ steps.get_releases.outputs.draft_release_id }}
-
     - name: Build
       run: |
         echo "Building your project..."
         echo "Hello, World!" > output.txt
-
-    - name: Get current time and format release name (PowerShell)
-      id: set_release_name
-      shell: pwsh  # 使用 PowerShell
-      run: |
-        $CURRENT_TIME = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        $FULL_RELEASE_NAME = "单点高校心理健康管理系统 v0.0.3 - $CURRENT_TIME"
-        echo "FULL_RELEASE_NAME=$FULL_RELEASE_NAME" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
 
     - name: Create or Update Release
       id: create_release
@@ -61,7 +28,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: v0.0.2
-        release_name: ${{ env.FULL_RELEASE_NAME }}
+        release_name: 单点高校心理健康管理系统 v0.0.2
         draft: true
         prerelease: false
         body: |
@@ -76,6 +43,23 @@ jobs:
           * 业务特点：支持老师和学生用户登录；内置学生，班主任，专业，系部等特殊角色，用于适用不同的应用场景。
           * 数据加密: 采用AES-256-GCM加密技术对API返回的接口数据进行加密，在前端接收到密文以后再进行解密和显示，可以极大的提高系统的安全性。
 
+          ## 内置功能
+          ### 心理测评
+          1.  设置心理测评的项目，以及管理学生的测评记录。
+          ### 心理报告
+          1.  由系统生成学生的心理状态报告。
+          ### 心理AI咨询
+          1.  心理老师AI对话: 支持学校心理老师使用AI对话的功能，用于记录或是实时反馈学生提出的心理问题。
+          2.  学生使用AI对话: 根据学校要求，可以设置开放或是关闭学生使用心理AI对话功能，如果开放，则允许学生使用AI对话功能。
+          3.  学生有条件使用AI对话: 学生可以在系统中提出心理问题，心理老师审核通过以后，由AI生成心理问题的回复，然后由心理老师对AI生成的回复进行审核，无误以后，回复给学生。
+          4.  AI对话模型: 国产大模型，不使用国外模型; 同时提交给AI的数据是匿名数据， 可以再次确保身份信息不会泄漏给大模型。
+          ### 系统管理 
+          1.  基础信息设置，包括：单位，部门，用户，角色，消息提醒，操作日志，慢SQL查询等模块。
+          ### 基础数据 
+          1.  学校基础信息，包括：系部，专业，班级，课程，教学计划，校区，建筑物，房间，教研室等模块。
+          ### 学生管理
+          1.  学生信息管理，支持调班，退学，休学，复学等基础功能。
+
           ## 安装步骤:
           1.  双击 MyXinLiJianKang.XXX.exe, 程序安装过程中你可以指定安装路径,但要求是英文路径,不能使用中文路径.
           2.  程序安装完成以后,弹出一个命令对话框,此部分主要会把相关的路径替换为您解压的位置,执行完成以后,直接按任意键结束.
@@ -85,17 +69,17 @@ jobs:
               管理员: admin / 密码: Abcd1234!
               系部: xibu / 密码: Abcd1234!
               班主任: banzhuren / 密码: Abcd1234!
-              学生: 20230101 / 密码: Abcd1234!   
+              学生: 20230101 / 密码: Abcd1234!    
 
     - name: Set upload URL
       run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_ENV
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ env.upload_url }}  # 使用设置的环境变量
+        upload_url: ${{ env.upload_url }}  # 使用环境变量
         asset_path: output.txt
         asset_name: output.txt
         asset_content_type: text/plain
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
