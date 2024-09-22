@@ -2,7 +2,7 @@ import os from 'os'
 
 const hostname = os.hostname()
 
-let APP_URL = "http://localhost:8080/api/"
+let APP_URL = '/api/'
 let themeNameTemp = "单点科技"
 let indexDashboardPath = "/ceping"
 let indexMenuspath = "auth/menus.php"
@@ -14,8 +14,6 @@ if(hostname == 'localhost')   {
   indexDashboardPath = "/ceping"
   indexMenuspath = "auth/menus.php"
 }
-
-console.log("hostname hostname:", hostname)
 
 export default {
   meEndpoint: APP_URL+'jwt.php?action=refresh',

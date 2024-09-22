@@ -66,7 +66,7 @@ Source: "{#MyAppSourceDir}\readme.txt"; DestDir: "{app}"; Flags: ignoreversion r
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "http://localhost:8080"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "http://localhost:80"
 
 [Run]
 Filename: "{app}\readme.txt"; Description: "{cm:LaunchProgram,Readme}"; Flags: shellexec nowait postinstall skipifsilent
