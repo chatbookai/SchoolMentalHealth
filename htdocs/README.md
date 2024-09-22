@@ -1,12 +1,12 @@
 <p align="center">
 	<img alt="logo" src="https://www.dandian.net/cn/wp-content/uploads/20171021044351_57.png">
 </p>
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">单点高校心理健康管理系统 v0.1</h1>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">单点学生心理健康管理系统 v0.1</h1>
 <h4 align="center">支持心理健康AI对话， 集成国产心理健康AI大模型</h4>
 
 ## 平台简介
 
-单点高校心理健康管理系统是为高校职校提供的一款涵盖心理测评，心理报告，心理AI咨询等领域的高校学生心理健康解决方案，基于GPL和商业许可双重授权发布。
+单点学生心理健康管理系统是为高校职校提供的一款涵盖心理测评，心理报告，心理AI咨询等领域的高校学生心理健康解决方案，基于GPL和商业许可双重授权发布。
 
 * 技术架构: 前端采用React，NextJS，MUI; 后端采用PHP，MYSQL。
 * 权限认证: 使用Jwt，支持AES-256-CBC和SM4-CBC(国密)等多种加密和认证方式，支持多终端认证系统。

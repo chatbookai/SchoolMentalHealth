@@ -47,14 +47,6 @@ jobs:
         name: MyXinLiJianKang-installer
         path: "D:/a/SchoolMentalHealth/SchoolMentalHealth/MyXinLiJianKang-0.1.exe"
     
-
-    - name: Get current time and format release name
-      id: set_release_name
-      run: |
-        $CURRENT_TIME = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        $FULL_RELEASE_NAME = "单点高校心理健康管理系统 V0.1 - $CURRENT_TIME"
-        echo "FULL_RELEASE_NAME=$FULL_RELEASE_NAME" >> $GITHUB_ENV  # 将最终的release name设置为环境变量
-
     - name: Create or Update Release
       id: create_release
       uses: actions/create-release@v1
@@ -62,13 +54,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: V0.1
-        release_name: ${{ env.FULL_RELEASE_NAME }}
+        release_name: "单点学生心理健康管理系统 V0.1"
         draft: true
         prerelease: false
         body: |
-          ## 单点高校心理健康管理系统简介
+          ## 单点学生心理健康管理系统简介
 
-          单点高校心理健康管理系统是为高校职校提供的一款涵盖心理测评，心理报告，心理AI咨询等领域的高校学生心理健康解决方案，基于GPL和商业许可双重授权发布。
+          单点学生心理健康管理系统是为高校职校提供的一款涵盖心理测评，心理报告，心理AI咨询等领域的高校学生心理健康解决方案，基于GPL和商业许可双重授权发布。
 
           * 技术架构: 前端采用React，NextJS，MUI; 后端采用PHP，MYSQL。
           * 权限认证: 使用Jwt，支持AES-256-CBC和SM4-CBC(国密)等多种加密和认证方式，支持多终端认证系统。
